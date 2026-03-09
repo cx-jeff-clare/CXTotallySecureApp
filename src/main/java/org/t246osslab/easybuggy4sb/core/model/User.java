@@ -10,6 +10,32 @@ import javax.naming.Name;
 import org.springframework.ldap.odm.annotations.Attribute;
 import org.springframework.ldap.odm.annotations.Entry;
 import org.springframework.ldap.odm.annotations.Id;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class UserUpdatePath {
+    public static void main(String[] args) throws Exception {
+        String username = args.length > 0 ? args[0] : "admin";
+
+        Connection conn = DriverManager.getConnection(
+            "jdbc:h2:mem:testdb", "sa", ""
+        );
+
+        Statement stmt = conn.createStatement();
+        String query = "SELECT * FROM users WHERE username = '" + username + "'";
+        ResultSet rs = stmt.executeQuery(query);
+
+        while (rs.next()) {
+            System.out.println(rs.getString(1));
+        }
+
+        rs.close();
+        stmt.close();
+        conn.close();
+    }
+}
 
 @Entry(objectClasses = { "person", "inetOrgPerson" })
 public class User implements Serializable {
