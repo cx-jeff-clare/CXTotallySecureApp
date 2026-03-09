@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
+import org.owasp.esapi.ESAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -49,7 +50,14 @@ public class DefaultLoginController extends AbstractController {
         Enumeration<?> paramNames = req.getParameterNames();
         while (paramNames.hasMoreElements()) {
             String paramName = (String) paramNames.nextElement();
-            hiddenMap.put(paramName, req.getParameterValues(paramName));
+            // Sanitize parameter name and values to prevent XSS attacks
+            String sanitizedParamName = ESAPI.encoder().encodeForHTML(paramName);
+            String[] paramValues = req.getParameterValues(paramName);
+            String[] sanitizedParamValues = new String[paramValues.length];
+            for (int i = 0; i < paramValues.length; i++) {
+                sanitizedParamValues[i] = ESAPI.encoder().encodeForHTML(paramValues[i]);
+            }
+            hiddenMap.put(sanitizedParamName, sanitizedParamValues);
             mav.addObject("hiddenMap", hiddenMap);
         }
 
