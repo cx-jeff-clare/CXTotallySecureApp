@@ -6,7 +6,7 @@
 
 # TotallySecureApp :lock:
 
-This project is intended to accompany the [Checkmarx Developer Workshops](https://workshops.checkmarx.com).  This is a clone of EasyBuggy built on Spring Boot. [EasyBuggy](https://github.com/k-tamura/easybuggy) is a broken web application in order to understand behavior of bugs and vulnerabilities, for example, [memory leak, deadlock, JVM crash, SQL injection and so on](https://github.com/k-tamura/easybuggy4sb/wiki).
+This project is intended to acc the [Checkmarx Developer Workshops](https://workshops.checkmarx.com).  This is a clone of EasyBuggy built on Spring Boot. [EasyBuggy](https://github.com/k-tamura/easybuggy) is a broken web application in order to understand behavior of bugs and vulnerabilities, for example, [memory leak, deadlock, JVM crash, SQL injection and so on](https://github.com/k-tamura/easybuggy4sb/wiki).
 
 As you may have gathered, this app isn't totally secure... actually far from it.  We use this source code to illustrate features, capabilities, and concepts within our Checkmarx workshops.
 
