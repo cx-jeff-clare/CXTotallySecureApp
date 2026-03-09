@@ -27,7 +27,8 @@ public class User implements Serializable {
     private String mail = null;
     private int loginFailedCount = 0;
     private Date lastLoginFailedTime = null;
-
+    private String password1 = "123Password";
+    
     @Override
     public String toString() {
         return "User dn=" + dn + " [userId=" + userId + ", name=" + name + ", password=" + password + ", secret="
