@@ -1,9 +1,11 @@
+// Commment for visibility
 package org.t246osslab.easybuggy4sb.core.model;
 
 import java.io.Serializable;
 import java.util.Date;
 
 import javax.naming.Name;
+
 
 import org.springframework.ldap.odm.annotations.Attribute;
 import org.springframework.ldap.odm.annotations.Entry;
@@ -60,7 +62,6 @@ public class User implements Serializable {
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
